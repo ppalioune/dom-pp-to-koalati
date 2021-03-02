@@ -1,0 +1,23 @@
+{
+  "name": "dom-pp-to-koalati",
+  "version": "1.0.0",
+  "description": "",
+  "main": "domppToKoalati.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ppalioune/dom-pp-to-koalati.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ppalioune/dom-pp-to-koalati/issues"
+  },
+  "homepage": "https://github.com/ppalioune/dom-pp-to-koalati#readme",
+  "dependencies": {
+    "koalati-dompp": "file:../dom-pp"
+  }
+}
