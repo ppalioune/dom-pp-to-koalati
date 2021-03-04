@@ -1,15 +1,31 @@
-//import {getVerdict} from './node_modules/koalati-dompp/index.mjs'
 
-import {evaluateDom} from '../dom-pp/index.mjs'
-console.log(evaluateDom);
+const ResultBuilder = require('result-builder')
+//console.log(ResultBuilder);
 
 class DomppToKoalati {
-    constructor(){}
+    constructor(cssProperty, tagName) {
+        this.cssProperty = cssProperty;
+        this.tagName = tagName
 
-    getTree(){
-        console.log(evaluateDom);
+        //Build result by result-builder
+        this.builder = new ResultBuilder()
     }
-   
-}
 
-export { DomppToKoalati };
+    addResultKoalati(tree, verdict){
+        //get the value to use as koalati results
+        const cssProperty = tree._rootNode._data.elementAttribute
+        const tagName = tree._rootNode._data.subject
+        const valueTest = tree._currentNode._data.subject
+
+        //use testCondition comme title (use verdicts)
+        const title = verdict.condition.name
+
+        //build result using ResultBuilder
+        const result = this.builder.newTest(tagName)
+        result.setTitle(title)
+              .setDescription("Test performed on " +tagName + " with " + cssProperty + " and value" + valueTest)
+    
+    }
+
+
+}
