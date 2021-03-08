@@ -101,12 +101,31 @@ describe("Witness tests", () => {
     expect(witness.length).to.equal(2);
     const trees = getTreeFromWitness(witness);
     console.log(trees);
+
+    console.log('ok');
+    var once = false
+    var cssProperty, tagName, valueTest
+
+    trees.traverser().traverseDFS(function(node){
+      //node  = trees.rootNode()
+      if(once == false){
+        cssProperty = trees.rootNode().data().elementAttribute
+        tagName = trees.rootNode().data().subject
+        valueTest = trees.currentNode().data().subject
+
+        console.log(cssProperty, tagName, valueTest, verdict.condition.name);
+        once = true
+      }
+      
+    });
+    
+
     //test for dom to kaolati
-    const cssProperty = trees._rootNode._data.elementAttribute
-    const tagName = trees._rootNode._data.subject
-    const valueTest = trees._currentNode._data.subject
+    //const cssProperty = trees._rootNode._data.elementAttribute
+    //const tagName = trees._rootNode._data.subject
+    //const valueTest = trees._currentNode._data.subject
     //console.log(trees._rootNode._data.elementAttribute);
-    console.log(cssProperty, tagName, valueTest, verdict.condition.name);
+    //console.log(cssProperty, tagName, valueTest, verdict.condition.name);
 
     let formatDomKoalati = new DomppToKoalati(cssProperty, tagName);
     const a = formatDomKoalati.addResultKoalati(trees,verdict)
