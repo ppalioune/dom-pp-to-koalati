@@ -100,7 +100,10 @@ describe("Witness tests", () => {
     expect(Array.isArray(witness)).to.be.true;
     expect(witness.length).to.equal(2);
     const trees = getTreeFromWitness(witness);
+
     console.log(trees);
+
+    //console.log(verdict);
 
     console.log('ok');
     var once = false
@@ -113,7 +116,7 @@ describe("Witness tests", () => {
         tagName = trees.rootNode().data().subject
         valueTest = trees.currentNode().data().subject
 
-        console.log(cssProperty, tagName, valueTest, verdict.condition.name);
+        //console.log(cssProperty, tagName, valueTest, verdict.condition.name);
         once = true
       }
       
@@ -128,8 +131,9 @@ describe("Witness tests", () => {
     //console.log(cssProperty, tagName, valueTest, verdict.condition.name);
 
     let formatDomKoalati = new DomppToKoalati(cssProperty, tagName);
-    const a = formatDomKoalati.addResultKoalati(trees,verdict)
-    console.log(formatDomKoalati.getResultKoalati());
+    formatDomKoalati.addResultKoalati(trees,verdict)
+    const resultkoalatidom = formatDomKoalati.getResultKoalati();
+    console.log(resultkoalatidom);
     
   });
 });
